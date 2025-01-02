@@ -21,9 +21,7 @@ RUN sudo apt update
 RUN echo 'deb [signed-by=/etc/apt/keyrings/koha.asc] https://debian.koha-community.org/koha 24.05 main' | sudo tee /etc/apt/sources.list.d/koha.list  
 RUN sudo apt update  
 RUN sudo apt install -y koha-common  
-RUN sudo apt install -y mariadb-server  
-
-# Enable Apache modules  
+RUN sudo apt install -y mariadb-server    
 RUN sudo a2enmod rewrite  
 RUN sudo a2enmod cgi  
 Save the Dockerfile and proceed to the next step.
