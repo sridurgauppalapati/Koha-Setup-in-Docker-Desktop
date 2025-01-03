@@ -36,45 +36,45 @@ Once the container is running, you'll be dropped into the root shell.
 # Step 3: Post-Setup Commands
 Inside the container, execute the following commands to complete the setup:
 
-# Verify and Restart Apache:
+1. Verify and Restart Apache:
 
 service apache2 status  
 service apache2 restart  
-# Edit Koha Configuration:
-# Open the configuration file:
+2. Edit Koha Configuration:
+Open the configuration file:
 
 vi /etc/koha/koha-sites.conf  
 Update the INTRAPORT with the port specified in the docker run command (e.g., 8080).
 
-# Handle vi Installation Issues:
+3. Handle vi Installation Issues:
 If you encounter issues using vi, install it with:
 apt install vim
 
-# Set Up MariaDB:
-# service mariadb status  
+4.** Set Up MariaDB:**
+service mariadb status  
 sudo koha-create --create-db <libraryname>  
 sudo a2enmod headers proxy_http 
 
-# Enable and Start Koha-Plack:
+5.** Enable and Start Koha-Plack:**
 sudo koha-plack --enable <libraryname>  
 sudo koha-plack --start <libraryname>  
 
-# Update Apache Ports:
-# Open the ports configuration file:
+6. **Update Apache Ports:**
+Open the ports configuration file:
 vi /etc/apache2/ports.conf  
 
-# Add the following line:
+Add the following line:
 Listen <port>  
 
-# Disable the default Apache site:
+Disable the default Apache site:
 sudo a2dissite 000-default  
 
-# Optimize Apache:
+7. Optimize Apache:
 sudo a2enmod deflate  
 a2ensite <libraryname>  
 service apache2 restart  
 
-# Set Koha Password:
-# Secure your Koha instance with:
+8. Set Koha Password:
+Secure your Koha instance with:
 
 sudo koha-passwd <libraryname>  
